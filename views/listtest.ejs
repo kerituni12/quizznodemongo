@@ -1,0 +1,21 @@
+<% include layouts/header %>
+<table class="table">
+    <tr>
+        <th>STT</th>
+        <th>Test Name</th>
+        <th>Count Question</th>
+        <th></th>
+        <th></th>
+      </tr>
+    <% tests.forEach(function(test, index){ %>
+    <tr>
+        <td><%=index%></td>
+        <td><%=test.name%></td>        
+        <td><%= count[index]%></td>        
+        <td><a href="/edit/<%= test._id%>">Edit</a></td>
+        <td><a href="/delete/<%= test._id%>">Del</a></td>        
+      </tr>
+    <%})%>
+</table>
+
+<% include layouts/footer %></input>

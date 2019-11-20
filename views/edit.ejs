@@ -1,0 +1,31 @@
+<% include layouts/header %>
+<% if(question.length > 0) {%>
+<form action='/updatequestion/<%= question[0].test_id%>' method="POST" id='form'>
+<% question.forEach(function(q, index){ let arr = ["one", "two", "three", "four"]%>
+    <div class='question_template'>
+
+            <br>
+            <b>Question:</b> <input type="text" name="question" value="<%= q.text%>" size='60px'>
+            <input type="hidden" name="id" value="<%= q._id%>">
+            
+                    <div class="row">
+              <%q.answers.forEach(function(answer, i) {%>
+                <div class="six columns <%= index%>">
+                    <b>Option <%=i%>:</b> <input type="text" name="<%= arr[i]%>" value="<%=answer%>"></input>
+                   
+                    <input <%= q.correct_answer == arr[i] ? 'checked' : null %> type="radio" name="correct[<%=index%>]" value="<%=arr[i]%>" ></input>
+                </div>
+             <% }) %>  
+          </div>
+<%})%>
+
+<div class="row buttons_tray">
+      <div class="six columns">
+      <input class='margin_button button-primary' type="submit" value="Done">
+    </div>
+  </div>
+
+
+</form>
+<% } else console.log('khong co question')%>
+<% include layouts/footer %>

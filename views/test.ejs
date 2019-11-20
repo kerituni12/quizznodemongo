@@ -1,0 +1,33 @@
+<% include layouts/header %>
+
+<form action='/result' method="post">
+    
+    <div id='section_one'>
+        <b>Name : <b><input type="text" name="name" value=""></iput>
+          <b>Class : <b><input type="text" name="class" value=""> </iput>
+            <b>Test : <b><select  name="test_id" id="test_id" class="form-control"  >
+                <option disabled selected value>
+                <% test.forEach(function(t, index){%>
+                 <option  value="<%= t._id %>"><%= t.name %>
+                <%})%>
+            </select>      
+  
+      <button class='margin_button button-primary' type="button" name="button" onclick="nextSection()">Continue</button>
+  
+    </div>
+    <div id='section_two'>
+  
+      <table>  
+        <tbody id='table'>
+
+        </tbody>
+      
+      </table>
+  
+      
+      <input style="display: none;" id="submit" class='margin_button button-primary' type="submit" value="Submit">
+  
+    </div>
+  
+  </form>
+  <% include layouts/footer %>
